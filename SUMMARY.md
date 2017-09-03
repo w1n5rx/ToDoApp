@@ -14,3 +14,4 @@ Altogether 6 hours to complete the task.
 
 * Integration with calendar
 * alarm-based to-do task
+* Add flag option for each task

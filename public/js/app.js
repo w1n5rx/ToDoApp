@@ -1,5 +1,7 @@
 // @author: Vinod Singh Ramalwan
-// Date: Sa 2. Sep 16:02:49 CEST 2017
+// @date: Sa 2. Sep 16:02:49 CEST 2017
+// @description: To create a to-do app as per details given in README.md file
+
 var incompleteTaskList = document.getElementById('incomplete-tasks');
 var completedTaskList = document.getElementById('completed-tasks');
 const url = 'http://localhost:3000/api/tasks';
@@ -22,9 +24,16 @@ function getUpdatedToDoList() {
                 listItems.push(eachItem);
             }
         }
-        document.getElementById("incomplete-tasks").innerHTML = ""; //Clear the old to-do list and update; Optimal solution: update only the new item keeping the old list intact ;)
+        document.getElementById("incomplete-tasks").innerHTML = ""; //Refresh to-do item list; Optimal solution: update only the new item keeping the old list intact ;)
+        document.getElementById("completed-tasks").innerHTML = ""; //Refresh completed item list; Optimal solution: update only the new item keeping the old list intact ;)
+        // localStorage.clear();
         return list.map(function(item) {
-            addItemToIncompleteTaskList(item);
+            if (localStorage.getItem(item) === null) {  // ****QUALIFICATION stage!
+                addItemToIncompleteTaskList(item);    
+            }
+            else {
+                addItemToCompletedTaskList(item);
+            }
         })
     })
     .catch(function(error) {
@@ -34,11 +43,11 @@ function getUpdatedToDoList() {
 
 function addItemToIncompleteTaskList(value) {
     let list = createList('li'),
-    inputType = createCheckbox('input'),
-    label = createLabel(value),
-    textbox = createTextBox(),
-    buttonEdit = createButton('edit'),
-    buttonDelete = createButton('delete');
+        inputType = createCheckbox('input'),
+        label = createLabel(value),
+        textbox = createTextBox(),
+        buttonEdit = createButton('edit'),
+        buttonDelete = createButton('delete');
     append(list, inputType);
     append(list, label);
     append(list, textbox);
@@ -48,8 +57,32 @@ function addItemToIncompleteTaskList(value) {
     
     buttonEdit.onclick = editItem;
     buttonDelete.onclick = deleteItem;
-    inputType.onclick = taskCompleted;
+    inputType.onclick = taskMarking;
+    if (localStorage.getItem(value) != null) {
+        localStorage.removeItem(value);
+    }
 }
+
+function updateListItems(payload) {
+    listItems.push(payload);
+}
+function addItemToCompletedTaskList(value) {
+    let list = createList('li'),
+        inputType = createCheckbox('input'),
+        label = createLabel(value),
+        textbox = createTextBox(),
+        buttonDelete = createButton('delete');
+    append(list, inputType);
+    append(list, label);
+    append(list, textbox);
+    append(list, buttonDelete);
+    append(completedTaskList, list);
+    
+    buttonDelete.onclick = deleteItem;
+    inputType.onclick = taskMarking;
+    localStorage.setItem(value, 1); //Add completed items on localstorage for appropriate mapping in ****QUALIFICATION stage!
+}
+
 // Add new task to the to-do list
 function addItemToList() {
     var newTask = document.getElementById('new-task').value;
@@ -69,7 +102,7 @@ function addItemToList() {
             console.log('OK ' + res.statusText);
             // getUpdatedToDoList();
             addItemToIncompleteTaskList(newTask);
-            
+            updateListItems(payload);
             document.getElementById("new-task").value = ""; // Clear value from text-box once add operation successful
         } else {
             console.log('Request failed.  Returned status of ' + res.status);
@@ -119,6 +152,7 @@ function editItem() {
                     if (res.ok) { // ok if status is 2xx
                         console.log('OK ' + res.statusText);
                         getUpdatedToDoList();
+                        listItems[i].text = modifiedValue;
                         document.getElementById("new-task").value = ""; // Clear value from text-box once add operation successful
                     } else {
                         console.log('Request failed.  Returned status of ' + res.status);
@@ -167,9 +201,13 @@ function deleteItem() {
             fetch(deleteUrl, {
                 method: 'DELETE',
             })
-            .then(function(res){
+            .then(function(res) {
                 if (res.ok) { // ok if status is 2xx
                     console.log('OK ' + res.statusText);
+                    if (localStorage.getItem(selectedItem) != null) {
+                        localStorage.removeItem(selectedItem);
+                        listItems.splice(i, 1); // Update the list item with modified value
+                    }
                     getUpdatedToDoList();
                     document.getElementById("new-task").value = ""; // Clear value from text-box once add operation successful
                 } else {
@@ -184,17 +222,19 @@ function deleteItem() {
         }
     }
 }
-// Mark a task as complete 
-function taskCompleted() {
+// Mark a task as complete or todo
+function taskMarking() {
     var listItem = this.parentNode;
-    remove(incompleteTaskList, listItem);
-    
-    let list = createList('li'),
-    label = createLabel(listItem.querySelector("label").innerText),
-    textbox = createTextBox();
-    append(list, label);
-    append(list, textbox);
-    append(completedTaskList, list);
+    var value = listItem.querySelector("label").innerText;
+    console.log(incompleteTaskList.contains(listItem));
+    if (incompleteTaskList.contains(listItem)) {
+        remove(incompleteTaskList, listItem);   //Remove from todo list
+        addItemToCompletedTaskList(value);      //Add to completed list
+    }
+    else {
+        remove(completedTaskList, listItem);   //Remove from completed list
+        addItemToIncompleteTaskList(value); //Append to todo list
+    }
 }
 
 function createList() {
