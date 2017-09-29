@@ -81,7 +81,15 @@ function addItemToCompletedTaskList(value) {
     buttonDelete.onclick = deleteItem;
     inputType.onclick = taskMarking;
     localStorage.setItem(value, 1); //Add completed items on localstorage for appropriate mapping in ****QUALIFICATION stage!
+    console.log(localStorage);
 }
+
+// Adding event listener for the enter key-press while creating new task
+document.getElementById('new-task').addEventListener("keyup", function(event) {
+    if (event.keyCode == '13') {
+        addItemToList();
+    }
+})
 
 // Add new task to the to-do list
 function addItemToList() {
