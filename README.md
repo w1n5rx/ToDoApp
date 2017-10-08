@@ -45,7 +45,7 @@ Static files in public are served as well.
 #### Curl example
 
 ```bash
-curl http://localhost:3000/
+curl http://localhost:5000/
 ```
 
 #### Response
@@ -123,7 +123,7 @@ Restarting the server will reset the tasks since it is using an in memory storag
 #### Curl example
 
 ```bash
-curl http://localhost:3000/api/tasks
+curl http://localhost:5000/api/tasks
 ```
 
 
@@ -159,7 +159,7 @@ curl -i \
     -H "Content-Type: application/json" \
     -X POST \
     -d '{"id":"001","text":"my great task"}' \
-    http://localhost:3000/api/tasks
+    http://localhost:5000/api/tasks
 ```
 
 
@@ -194,7 +194,7 @@ curl -i \
     -H "Content-Type: application/json" \
     -X PUT \
      -d '{"id":"001","text":"my great new task"}' \
-    http://localhost:3000/api/tasks/001
+    http://localhost:5000/api/tasks/001
 ```
 
 
@@ -219,6 +219,6 @@ This method will delete the task in the in memory storage.
 #### Curl example
 
 ```bash
-curl -i -X DELETE http://localhost:3000/api/tasks/001
+curl -i -X DELETE http://localhost:5000/api/tasks/001
 ```
 # ToDoApp
