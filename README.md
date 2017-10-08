@@ -1,17 +1,11 @@
-# Programming Challenge: Online To-Do List
-
 ### Objective
 Create a single page web application to manage a task list using plain JavaScript.
 
 ### Requirements
-The application provides the functionality to view the list of to-do items, create them, and mark them as done. The front-end technology is based on JavaScript / HTML / CSS. Tasks are stored using a Rest service. Please realize data transfer between web client and back-end
-service.
+The application provides the functionality to view the list of to-do items, create them, and mark them as done. The front-end technology is based on JavaScript / HTML / CSS. Tasks are stored using a Rest service. Data transfer between web client and back-end service is realized too.
 
 ### Additional Information
-The server-side implementation is provided and implemented based on Node.js. The API is documented below. Please deliver an appealing, well-crafted and creative solution. You are free to extend the feature set. Try to use as few libraries as possible, **we want to see your understanding of standard web technologies and thus plain JavaScript is preferred**.
-
-**Don't forget to polish your user interface with your flavor of CSS.**
-
+The server-side implementation is done in Node.js. The API is documented below.
 --------------------------------------------------------
 
 # Back-end Service
@@ -62,21 +56,41 @@ curl http://localhost:3000/
     Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
     Content-Type: application/json; charset=utf-8
     Content-Length: 43
-    Date: Tue, 11 Oct 2016 09:52:06 GMT
+    Date: Sun, 8 Oct 2017 09:52:06 GMT
     Connection: keep-alive
 
     <!DOCTYPE html>
     <html lang="en">
     <head>
-      <meta charset="UTF-8">
-      <title>Todo App</title>
+    <meta charset="UTF-8">
+    <title>Todo App</title>
+    <link rel = "stylesheet" type = "text/css" href = "stylesheets/app.css" />
     </head>
-    <body>
-      <h1>Todo App</h1>
+    <body onload="getUpdatedToDoList()">
+    <center><h1>Todo App</h1></center>
 
-      TODO: build app
+    <!-- get all the tasks that's already defined -->
+    <div class="container">
+        <div>
+        <label for="new-task">Add Item </label>
+        <input id="new-task" type="text">
+        <button onclick="addItemToList()">Add</button>
+        </div>
+        
+        <div>
+        <h3>Todo</h3>
+        <ul id="incomplete-tasks"></ul>
+        </div>
+        
+        <div>
+        <h3>Completed</h3>
+        <ul id="completed-tasks"></ul>
+        </div>
+    </div>
+
     </body>
-    </html>
+    <script type="text/javascript" src="js/app.js"></script>
+
 
 - - -
 
@@ -96,14 +110,14 @@ Restarting the server will reset the tasks since it is using an in memory storag
     Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
     Content-Type: application/json; charset=utf-8
     Content-Length: 43
-    Date: Tue, 11 Oct 2016 09:52:06 GMT
+    Date: Sun, 8 Oct 2017 09:52:06 GMT
     Connection: keep-alive
 
     {
-      "1": { "id": '1', "text": "Read description of programming challenge" },
-      "2": { "id": "2", "text": "Implement an awesome web app" },
-      "3": { "id": "3", "text": "Polish project" },
-      "9": { "id": "9", "text": "Send solution to LogMeIn" }
+      "1": { "id": '1', "text": "Send application" },
+      "2": { "id": "2", "text": "HR interview" },
+      "3": { "id": "3", "text": "Deploy a sample project to show your proficiency" },
+      "9": { "id": "9", "text": "Get ready for further technical rounds" }
     }
 
 #### Curl example
@@ -135,7 +149,7 @@ This will save the new task in the in memory storage.
     X-Powered-By: Express
     Access-Control-Allow-Origin: *
     Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
-    Date: Tue, 11 Oct 2016 09:47:41 GMT
+    Date: Sun, 8 Oct 2017 09:47:41 GMT
     Connection: keep-alive
 
 #### Curl example
@@ -170,7 +184,7 @@ This will update the task in the in memory storage.
     X-Powered-By: Express
     Access-Control-Allow-Origin: *
     Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
-    Date: Tue, 11 Oct 2016 09:52:06 GMT
+    Date: Sun, 8 Oct 2017 09:52:06 GMT
     Connection: keep-alive
 
 #### Curl example
@@ -199,7 +213,7 @@ This method will delete the task in the in memory storage.
     X-Powered-By: Express
     Access-Control-Allow-Origin: *
     Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
-    Date: Tue, 11 Oct 2016 09:52:49 GMT
+    Date: Sun, 8 Oct 2017 09:52:49 GMT
     Connection: keep-alive
 
 #### Curl example

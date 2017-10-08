@@ -3,12 +3,12 @@ var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
-var tasks = {
-	"1": { "id": "1", "text": "Read description of programming challenge" },
-  	"2": { "id": "2", "text": "Implement awesome web app" },
-  	"3": { "id": "3", "text": "Polish project" },
-  	"9": { "id": "9", "text": "Send solution to LogMeIn" }
-};
+var tasks =     {
+	"1": { "id": '1', "text": "Send application" },
+	"2": { "id": "2", "text": "HR interview" },
+	"3": { "id": "3", "text": "Deploy a sample project to show your proficiency" },
+	"9": { "id": "9", "text": "Get ready for further technical rounds" }
+  };
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

@@ -1,6 +1,6 @@
 // @author: Vinod Singh Ramalwan
-// @date: Sa 2. Sep 16:02:49 CEST 2017
-// @description: To create a to-do app as per details given in README.md file
+// @date: So 8. Okt 12:12:00 CEST 2017
+// @description: To create a to-do app
 
 var incompleteTaskList = document.getElementById('incomplete-tasks');
 var completedTaskList = document.getElementById('completed-tasks');
