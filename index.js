@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
+var port = process.env.PORT || 5000;
 
 var tasks =     {
 	"1": { "id": '1', "text": "Send application" },
@@ -67,6 +68,6 @@ app.delete('/api/tasks/:id', function(req, res) {
 	res.status(204).send();
 });
 
-app.listen(3000, function () {
-	  console.log('To-Do app listening on port 3000!');
+app.listen(port, function () {
+	  console.log('To-Do app listening on port 5000!');
 });
