@@ -1,7 +1,7 @@
 {
     "name": "ToDoApp on Heroku",
-    "description": "ToDoApp deployed on Heroku",
-    "repository": "",
+    "description": "ToDoApp deployed on Heroku using Express",
+    "repository": "https://github.com/w1n5rx/ToDoApp.git",
     "logo": "ToDoIcon.png",
     "keywords": ["node", "express", "static"],
     "image": "heroku/nodejs"

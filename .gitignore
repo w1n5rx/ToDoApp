@@ -44,4 +44,4 @@ jspm_packages
 *.tgz
 
 # vscode files
-.vscode
+.vscodenode_modules
