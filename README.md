@@ -221,4 +221,9 @@ This method will delete the task in the in memory storage.
 ```bash
 curl -i -X DELETE http://localhost:3000/api/tasks/001
 ```
-# ToDoApp
+### Ideas for Improvement
+Here are some ideas for this app that could be extended:
+
+* Integrate calendar
+* Categorize tasks as urgent, important, etc ...
+I would love to see contributions and improvements, so please fork this repository on GitHub and send me your changes via pull requests.
