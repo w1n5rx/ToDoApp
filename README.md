@@ -221,6 +221,13 @@ This method will delete the task in the in memory storage.
 ```bash
 curl -i -X DELETE http://localhost:5000/api/tasks/001
 ```
+
+#### Deployed version
+
+```
+https://basic-todoapp.herokuapp.com/
+```
+
 ### Ideas for Improvement
 Here are some ideas for this app that could be extended:
 

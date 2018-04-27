@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 5000;	//Better do this!
 
 var tasks =     {
 	"1": { "id": '1', "text": "Send application" },

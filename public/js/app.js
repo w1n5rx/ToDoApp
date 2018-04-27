@@ -4,7 +4,7 @@
 
 var incompleteTaskList = document.getElementById('incomplete-tasks');
 var completedTaskList = document.getElementById('completed-tasks');
-const url = 'https://basic-todoapp.herokuapp.com/api/tasks';
+const url = 'http://localhost:5000/api/tasks';
 var listItems = []; //Global array to keep track of all to-do items across various operations (add, edit, delete)
 
 // Get the existing to-do tasks
