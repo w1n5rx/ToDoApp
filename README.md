@@ -221,4 +221,13 @@ This method will delete the task in the in memory storage.
 ```bash
 curl -i -X DELETE http://localhost:5000/api/tasks/001
 ```
-# ToDoApp
+### Ideas for Improvement
+Here are some ideas for this app that could be extended:
+
+* Integrate calendar
+* Categorize tasks as urgent, important, etc ...
+* Use [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) .
+Examples as shown in [DnD for File Uploading](https://css-tricks.com/drag-and-drop-file-uploading/) and [DnD for Car Parking Game](https://css-tricks.com/creating-a-parking-game-with-the-html-drag-and-drop-api/)
+
+
+I would love to see contributions and improvements, so please fork this repository on GitHub and send me your changes via pull requests.
