@@ -237,4 +237,11 @@ Here are some ideas for this app that could be extended:
 Examples as shown in [DnD for File Uploading](https://css-tricks.com/drag-and-drop-file-uploading/) and [DnD for Car Parking Game](https://css-tricks.com/creating-a-parking-game-with-the-html-drag-and-drop-api/)
 
 
-I would love to see contributions and improvements, so please fork this repository on GitHub and send me your changes via pull requests.
+I would love to see contributions (checkout below how to do it!) and improvements.
+
+### Contributing
+* Fork it ( https://github.com/w1n5rx/ToDoApp/fork )
+* Create your feature branch (git checkout -b my-new-feature)
+* Commit your changes (git commit -am 'Add some feature')
+* Push to the branch (git push origin my-new-feature)
+* Create a new Pull Request
